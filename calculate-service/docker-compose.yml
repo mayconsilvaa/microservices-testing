@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  calculate-service:
+    image: node:alpine
+    container_name: calculate-service
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${NODE_PORT}:${NODE_PORT}
+    volumes:
+      - .:/app
+    working_dir: /app
+    networks:
+      - api-gateway_service-network
+    command: yarn dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+networks:
+  api-gateway_service-network:
+    external: true

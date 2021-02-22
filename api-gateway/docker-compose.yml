@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  redis:
+    image: 'bitnami/redis:latest'
+    container_name: redis_bd
+    env_file:
+      - .env
+    command: ["redis-server", "--bind", "redis", "--port ${REDIS_PORT}"]
+    ports:
+      - ${REDIS_PORT}:6379
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASS}
+    volumes:
+      - redis_db
+    networks:
+      - service-network
+  api-gateway:
+    image: node:alpine
+    container_name: api-gateway
+    restart: always
+    # depends_on:
+    #   - redis_bd
+    env_file:
+      - .env
+    ports:
+      - ${NODE_PORT}:${NODE_PORT}
+    volumes:
+      - .:/app
+    working_dir: /app
+    networks:
+      - service-network
+    command: yarn dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  redis_db:
+networks:
+  service-network:
+    driver: bridge
