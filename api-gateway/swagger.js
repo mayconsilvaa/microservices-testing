@@ -5,5 +5,5 @@ export const swaggerOptions = {
       version: '1.0.0',
     },
   },
-  apis: ['./shared/infra/http/routes'],
+  apis: ['./shared/infra/http/routes*.js'],
 };

@@ -8,7 +8,7 @@ class RealtyRepository {
       if (realty.length <= 0) {
         return res.status(200).json({
           realty,
-          message: 'Nenhum imóvel indisponível!',
+          message: 'Nenhum imóvel disponível!',
         });
       }
 

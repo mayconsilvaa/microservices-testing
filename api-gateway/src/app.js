@@ -2,8 +2,8 @@ import './bootstrap';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import swaggerUi from 'swagger-ui-express';
 import httpProxy from 'express-http-proxy';
+// import swaggerUi from 'swagger-ui-express';
 // import swaggerDocument from '../swagger';
 // import swaggerJsDoc from 'swagger-jsdoc';
 import routes from './shared/infra/http/routes';
@@ -29,15 +29,15 @@ class App {
      * Documentation
      */
 
-    const swaggerOptions = {
-      swaggerDefinition: {
-        info: {
-          title: 'API GATEWAY',
-          version: '1.0.0',
-        },
-      },
-      apis: ['./shared/infra/http/routes*.js'],
-    };
+    // const swaggerOptions = {
+    //   swaggerDefinition: {
+    //     info: {
+    //       title: 'API GATEWAY',
+    //       version: '1.0.0',
+    //     },
+    //   },
+    //   apis: ['./shared/infra/http/routes*.js'],
+    // };
 
     // const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
