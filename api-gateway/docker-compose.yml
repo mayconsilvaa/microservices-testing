@@ -19,8 +19,6 @@ services:
     image: node:alpine
     container_name: api-gateway
     restart: always
-    depends_on:
-      - redis_bd
     env_file:
       - .env
     ports:

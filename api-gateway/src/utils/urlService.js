@@ -14,6 +14,8 @@ const urls = {
 };
 
 export const urlService = req => {
+  console.log('req', req.path);
+
   if (req.path.startsWith(`${baseUrl}/imovel`)) return urls.imovel;
   if (req.path.startsWith(`${baseUrl}/calculate`)) return urls.calculate;
 };

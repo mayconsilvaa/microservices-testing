@@ -42,7 +42,7 @@ class UserRepository {
       }
 
       return res.status(200).json({
-        userExist,
+        data: userExist,
         message: 'Usuário listado com sucesso!',
       });
     } catch (err) {

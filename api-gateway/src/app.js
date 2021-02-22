@@ -3,9 +3,9 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import httpProxy from 'express-http-proxy';
-// import swaggerUi from 'swagger-ui-express';
-// import swaggerDocument from '../swagger';
-// import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from 'swagger-jsdoc';
+import { swaggerOptions } from './config/swagger';
 import routes from './shared/infra/http/routes';
 import { urlService } from './utils/urlService';
 import authJwt from './shared/infra/http/middlewares/auth';
@@ -29,19 +29,9 @@ class App {
      * Documentation
      */
 
-    // const swaggerOptions = {
-    //   swaggerDefinition: {
-    //     info: {
-    //       title: 'API GATEWAY',
-    //       version: '1.0.0',
-    //     },
-    //   },
-    //   apis: ['./shared/infra/http/routes*.js'],
-    // };
+    const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
-    // const swaggerDocs = swaggerJsDoc(swaggerOptions);
-
-    // this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+    this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
     /**
      * Route Init
